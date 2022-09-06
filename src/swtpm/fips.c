@@ -36,9 +36,8 @@
  */
 
 #include "config.h"
-
-#include "fips.h"
 #include "logging.h"
+#include "fips.h"
 
 #include <openssl/opensslv.h>
 
@@ -49,11 +48,7 @@
 extern int FIPS_mode(void);
 extern int FIPS_mode_set(int);
 #endif
-
-#if OPENSSL_VERSION_NUMBER >= 0x30000000L
-# include <openssl/evp.h>
-#endif
-
+#include <openssl/evp.h>
 #include <openssl/err.h>
 
 #if defined(HAVE_OPENSSL_FIPS_H) || defined(HAVE_OPENSSL_FIPS_MODE_SET_API)

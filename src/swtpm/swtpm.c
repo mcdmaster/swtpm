@@ -38,22 +38,6 @@
 
 #include <config.h>
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
-#include <time.h>
-#include <getopt.h>
-#include <errno.h>
-#include <poll.h>
-#include <sys/stat.h>
-#include <stdbool.h>
-#include <sys/types.h>
-#include <sys/socket.h>
-
-#include <libtpms/tpm_error.h>
-#include <libtpms/tpm_library.h>
-#include <libtpms/tpm_memory.h>
-
 #include "main.h"
 #include "swtpm_debug.h"
 #include "swtpm_io.h"
@@ -72,6 +56,23 @@
 #include "seccomp_profile.h"
 #include "options.h"
 #include "capabilities.h"
+#include <libtpms/tpm_error.h>
+#include <libtpms/tpm_library.h>
+#include <libtpms/tpm_memory.h>
+#include <libtpms/tpm_types.h>
+
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include <time.h>
+#include <getopt.h>
+#include <errno.h>
+#include <poll.h>
+#include <sys/stat.h>
+#include <stdbool.h>
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <GLib.h>
 
 /* local variables */
 static int notify_fd[2] = {-1, -1};

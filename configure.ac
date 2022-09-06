@@ -147,12 +147,12 @@ AC_ARG_WITH([openssl],
 
 case "$cryptolib" in
 openssl)
-	AC_CHECK_LIB(crypto,
-		      [AES_set_encrypt_key],
-		      [true],
-		      AC_MSG_ERROR(Faulty openssl crypto library))
-	AC_CHECK_HEADERS([openssl/aes.h],[],
-			 AC_MSG_ERROR(Is openssl-devel/libssl-dev installed?))
+	# AC_CHECK_LIB(crypto,
+	# 	      [AES_set_encrypt_key],
+	#	      [true],
+	#	      AC_MSG_ERROR(Faulty openssl crypto library))
+	# AC_CHECK_HEADERS([openssl/aes.h],[],
+	# 		 AC_MSG_ERROR(Is openssl-devel/libssl-dev installed?))
 	AC_MSG_RESULT([Building with openssl crypto library])
 	LIBCRYPTO_LIBS=$(pkg-config --libs libcrypto)
 	AC_SUBST([LIBCRYPTO_LIBS])

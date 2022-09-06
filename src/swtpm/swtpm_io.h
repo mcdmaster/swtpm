@@ -40,6 +40,9 @@
 #ifndef _SWTPM_IO_H_
 #define _SWTPM_IO_H_
 
+#include "utils.h"
+#include <libtpms/tpm_types.h>
+
 typedef struct TPM_CONNECTION_FD {
     int fd;     /* for socket, just an int */
 } TPM_CONNECTION_FD;

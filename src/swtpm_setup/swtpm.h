@@ -69,7 +69,7 @@ struct swtpm {
     size_t n_fds_to_pass;
     gboolean is_tpm2;
 
-    GPid pid;
+    pid_t pid;
     int ctrl_fds[2];
     int data_fds[2];
 };

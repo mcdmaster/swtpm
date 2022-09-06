@@ -130,7 +130,7 @@ static int swtpm_start(struct swtpm *self)
 
     success = g_spawn_async(NULL, argv, NULL,
                             G_SPAWN_LEAVE_DESCRIPTORS_OPEN | G_SPAWN_STDOUT_TO_DEV_NULL | G_SPAWN_STDERR_TO_DEV_NULL,
-                            NULL, NULL, &self->pid, &error);
+                            NULL, NULL, (GPid*)&self->pid, &error);
     if (!success) {
         logerr(self->logfile, "Could not start swtpm: %s\n", error->message);
         g_error_free(error);
@@ -1931,7 +1931,7 @@ static void swtpm_init(struct swtpm *swtpm,
     swtpm->n_fds_to_pass = n_fds_to_pass;
     swtpm->is_tpm2 = is_tpm2;
 
-    swtpm->pid = -1;
+    swtpm->pid = (pid_t)1U * -1;
     swtpm->ctrl_fds[0] = swtpm->ctrl_fds[1] = -1;
     swtpm->data_fds[0] = swtpm->data_fds[1] = -1;
 }

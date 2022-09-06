@@ -381,7 +381,7 @@ static int tpm2_create_ek_and_cert(unsigned long flags, const gchar *config_file
 
                 g_free(filecontent);
                 filecontent = NULL;
-                ret = read_file(certfile, &filecontent, &filecontent_len);
+                ret = read_file(certfile, &filecontent, (gsize *)&filecontent_len);
                 if (ret != 0)
                     return 1;
 

@@ -289,7 +289,7 @@ static int get_next_serial(const gchar *certserial, const gchar *lockfile,
                            gchar **serial_str)
 {
     g_autofree gchar *buffer = NULL;
-    size_t buffer_len;
+    size_t buffer_len = 0;
     unsigned long long serial, serial_n;
     char *endptr = NULL;
     int lockfd;
@@ -301,7 +301,7 @@ static int get_next_serial(const gchar *certserial, const gchar *lockfile,
 
     if (access(certserial, R_OK) != 0)
         write_file(certserial, (unsigned char *)"1", 1);
-    if (read_file(certserial, &buffer, &buffer_len) != 0)
+    if (read_file(certserial, &buffer, (gsize *)buffer_len) != 0)
         goto error;
 
     if (buffer_len > 0) {
